@@ -1,8 +1,8 @@
 # Kube TP 1 - `Introduction à Kubernetes`
 
-## 1. Installer `Minikube` et `Kubectl`
+## Etape 1. Installer `Minikube` et `Kubectl`
 Suivre cette documentation : https://minikube.sigs.k8s.io/docs/start/ 
-## 2. `Pod Nginx`
+## Etape 2.  `Pod Nginx`
 
 ### Héberger un premier Pod `Nginx` :
 
@@ -107,7 +107,7 @@ kubectl delete pod my-nginx
 ```
 
 
-## Héberger deux Pods : `phpMyAdmin` et MySQL (avec Minikube)
+## Etape 3.a. Héberger deux Pods : `phpMyAdmin` et MySQL (avec Minikube)
 
 ### 1. Deployment MySQL
 
@@ -240,21 +240,21 @@ kubectl get services
 
 ```
 
-## Créer un Service associé au Pod MySQL
+## Etape 3.b. Créer un Service associé au Pod MySQL
 
 C’est déjà fait ci-dessus via `mysql-service.yaml`.
 
 Le Service s’appelle `mysql-service`.
 Il permet à d’autres Pods du cluster (`phpMyAdmin`, par exemple) de se connecter à MySQL en utilisant l’hostname `mysql-service` et le port `3306`.
 
-## Connecter `phpMyAdmin` avec le Service `MySQL`
+## Etape 3.c. Connecter `phpMyAdmin` avec le Service `MySQL`
 Grâce aux variables d’environnement dans `phpmyadmin-deployment.yaml`, `phpMyAdmin` se connecte automatiquement à MySQL via `mysql-service:3306`.
 ```bash
 PMA_HOST=mysql-service
 PMA_PORT=3306
 ```
 
-## Vérifier avec `kubectl port-forward` que `phpMyAdmin` peut administrer `MySQL`
+## Etape 3.d. Vérifier avec `kubectl port-forward` que `phpMyAdmin` peut administrer `MySQL`
 
 Pour accéder à l’interface web de `phpMyAdmin` depuis le navigateur local, nous allons faire un `port-forward` sur le Pod ou sur le Deployment phpMyAdmin.
 
