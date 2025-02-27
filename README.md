@@ -220,7 +220,7 @@ spec:
             - containerPort: 80
 ```
 
-`PMA_HOST` : On met le nom du Service MySQL (mysql-service) au lieu de localhost.
+`PMA_HOST` : On met le nom du Service MySQL (`mysql-service`) au lieu de localhost.
 `PMA_PORT` : On indique le port du Service (3306).
 `MYSQL_ROOT_PASSWORD` : Permet de se connecter en root.
 `ports` : Le conteneur `phpMyAdmin` écoute par défaut sur le port 80.
@@ -242,21 +242,21 @@ kubectl get services
 
 ## Créer un Service associé au Pod MySQL
 
-C’est déjà fait ci-dessus via mysql-service.yaml.
+C’est déjà fait ci-dessus via `mysql-service.yaml`.
 
-Le Service s’appelle mysql-service.
-Il permet à d’autres Pods du cluster (`phpMyAdmin`, par exemple) de se connecter à MySQL en utilisant l’hostname mysql-service et le port 3306.
+Le Service s’appelle `mysql-service`.
+Il permet à d’autres Pods du cluster (`phpMyAdmin`, par exemple) de se connecter à MySQL en utilisant l’hostname `mysql-service` et le port `3306`.
 
-## Connecter `phpMyAdmin` avec le Service MySQL
+## Connecter `phpMyAdmin` avec le Service `MySQL`
 Grâce aux variables d’environnement dans `phpmyadmin-deployment.yaml`, `phpMyAdmin` se connecte automatiquement à MySQL via `mysql-service:3306`.
 ```bash
 PMA_HOST=mysql-service
 PMA_PORT=3306
 ```
 
-## Vérifier avec kubectl port-forward que phpMyAdmin peut administrer MySQL
+## Vérifier avec `kubectl port-forward` que `phpMyAdmin` peut administrer `MySQL`
 
-Pour accéder à l’interface web de phpMyAdmin depuis le navigateur local, nous allons faire un port-forward sur le Pod ou sur le Deployment phpMyAdmin.
+Pour accéder à l’interface web de `phpMyAdmin` depuis le navigateur local, nous allons faire un `port-forward` sur le Pod ou sur le Deployment phpMyAdmin.
 
 ```bash
 kubectl port-forward pod/phpmyadmin-deployment-64999b89b5-bwrcr 8081:80
@@ -266,4 +266,4 @@ kubectl port-forward pod/phpmyadmin-deployment-64999b89b5-bwrcr 8081:80
 Utilisateur : root
 Mot de passe : root
 
-Vous devriez voir la base tp_db et pouvoir exécuter des requêtes, créer des tables, etc.
+Vous devriez voir la base `tp_db` et pouvoir exécuter des requêtes, créer des tables, etc.
